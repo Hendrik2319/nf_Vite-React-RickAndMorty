@@ -1,14 +1,10 @@
-export type InfoJSON = {
-    count: number
-    pages: number
-    next: string | null
-    prev: string | null
-}
+import {Info} from "./Types.tsx";
+
 type InfoBlockProps = {
-    data: InfoJSON
+    data: Info
 }
 
-export function InfoBlock( props: InfoBlockProps ) {
+export default function InfoBlock( props: InfoBlockProps ) {
     return (
         <div className="InfoBlock">
             <div>Count: {props.data.count}</div>

@@ -1,17 +1,11 @@
-export type CharacterJSON = {
-    id: number
-    name: string
-    status: string
-    species: string
-    type: string
-    gender: string
-}
+import {Character} from "./Types.tsx";
+
 type CharacterBlockProps = {
     key: number
-    data: CharacterJSON
+    data: Character
 }
 
-export function CharacterBlock( props: CharacterBlockProps ) {
+export default function CharacterBlock( props: CharacterBlockProps ) {
     return (
         <div className="CharacterBlock">
             <div>id      : {props.data.id      }</div>
