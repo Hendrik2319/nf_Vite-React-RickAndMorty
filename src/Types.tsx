@@ -14,3 +14,8 @@ export type Character = {
     gender: string
 }
 
+export type CharacterResponse = {
+    info: Info
+    results: Character[]
+}
+

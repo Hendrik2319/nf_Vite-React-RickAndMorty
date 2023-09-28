@@ -7,16 +7,19 @@ body {
     flex-wrap: wrap;
 }
 
-.InfoBlock, .CharacterBlock {
-    border: 1px solid;
+.InfoBlock, .CharacterBlock, .SearchBox {
+    border: 1px solid #d0d0d0;
     border-radius: 10px;
     padding: 10px;
+    background-color: #f7f7f7;
 }
 
-.CharacterBlock {
-    border-color: dodgerblue;
+.SearchBox {
+    border-color: #70ff70;
+    background-color: #f0fff0;
 }
 .InfoBlock {
-    border-color: black;
+    border-color: #ff7070;
+    background-color: #fff0f0;
 }
 
