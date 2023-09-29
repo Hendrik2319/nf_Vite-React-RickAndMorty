@@ -25,12 +25,8 @@ export default function App() {
 
     function addCharacter(newCharacter: NewCharacter) {
         const character: CharacterDetails = {
-            id     : findUnusedId(),
-            name   : newCharacter.name   ,
-            gender : newCharacter.gender ,
-            status : newCharacter.status ,
-            type   : newCharacter.type   ,
-            species: newCharacter.species,
+            id: findUnusedId(),
+            ...newCharacter,
         }
         const newData: RawData = {
             info: data.info,

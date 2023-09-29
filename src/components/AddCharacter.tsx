@@ -16,24 +16,16 @@ function createEmptyCharacter(): NewCharacter {
     }
 }
 
-type SetValueFcn = (value:string, newCharacter: NewCharacter) => void
-type ChangeEventHandler = (event: ChangeEvent<HTMLInputElement>) => void
-
 export default function AddCharacter( props: AddCharacterProps) {
     const [newCharacter, setNewCharacter]
         = useState<NewCharacter>(createEmptyCharacter())
     console.debug("AddCharacter rendered")
 
-    function setValue( event: ChangeEvent<HTMLInputElement>, changeAValue: SetValueFcn ) {
-        const changedNewCharacter: NewCharacter = {
-            name   : newCharacter.name   ,
-            gender : newCharacter.gender ,
-            status : newCharacter.status ,
-            type   : newCharacter.type   ,
-            species: newCharacter.species,
-        }
-        changeAValue( event.target.value, changedNewCharacter )
-        setNewCharacter( changedNewCharacter )
+    function onChangeFcn( event: ChangeEvent<HTMLInputElement> ) {
+        setNewCharacter( {
+            ...newCharacter,
+            [event.target.name]: event.target.value
+        } )
     }
 
     function saveCharacter( event: FormEvent<HTMLFormElement> ) {
@@ -42,17 +34,13 @@ export default function AddCharacter( props: AddCharacterProps) {
         setNewCharacter( createEmptyCharacter() )
     }
 
-    function createOnChangeFcn( changeAValue: SetValueFcn ): ChangeEventHandler {
-        return e => setValue( e, changeAValue )
-    }
-
     return (
         <form className="AddCharacterForm" onSubmit={saveCharacter}>
-            <label>name    : <input value={newCharacter.name    } onChange={createOnChangeFcn((val,ch)=>ch.name    = val)}/></label>
-            <label>gender  : <input value={newCharacter.gender  } onChange={createOnChangeFcn((val,ch)=>ch.gender  = val)}/></label>
-            <label>status  : <input value={newCharacter.status  } onChange={createOnChangeFcn((val,ch)=>ch.status  = val)}/></label>
-            <label>type    : <input value={newCharacter.type    } onChange={createOnChangeFcn((val,ch)=>ch.type    = val)}/></label>
-            <label>species : <input value={newCharacter.species } onChange={createOnChangeFcn((val,ch)=>ch.species = val)}/></label>
+            <label>name    : <input name="name"    value={newCharacter.name    } onChange={onChangeFcn}/></label>
+            <label>gender  : <input name="gender"  value={newCharacter.gender  } onChange={onChangeFcn}/></label>
+            <label>status  : <input name="status"  value={newCharacter.status  } onChange={onChangeFcn}/></label>
+            <label>type    : <input name="type"    value={newCharacter.type    } onChange={onChangeFcn}/></label>
+            <label>species : <input name="species" value={newCharacter.species } onChange={onChangeFcn}/></label>
             <button>Save</button>
         </form>
     )
