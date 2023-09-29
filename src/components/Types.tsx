@@ -19,3 +19,23 @@ export type CharacterResponse = {
     results: Character[]
 }
 
+export type Location = {
+    name: string
+    url: string
+}
+
+export type CharacterDetails = {
+    id: number
+    name: string
+    status: string
+    species: string
+    type: string
+    gender: string
+    origin: Location
+    location: Location
+    image: string,
+    episode: string[]
+    url: string,
+    created: string
+}
+
