@@ -26,10 +26,13 @@ export default function CharacterDetailCard( props: CharacterDetailCardProps ) {
             <div>status  : {foundCharacter.status  }</div>
             <div>type    : {foundCharacter.type    }</div>
             <div>species : {foundCharacter.species }</div>
-            {foundCharacter.origin   && <div>origin   : {foundCharacter.origin  .name  }</div>}
-            {foundCharacter.location && <div>location : {foundCharacter.location.name  }</div>}
-            {foundCharacter.created  && <div>created  : {foundCharacter.created        }</div>}
+            {foundCharacter.origin   && <div>origin   : <a href={foundCharacter.origin  .url}>{foundCharacter.origin  .name}</a></div>}
+            {foundCharacter.location && <div>location : <a href={foundCharacter.location.url}>{foundCharacter.location.name}</a></div>}
+            {foundCharacter.created  && <div>created  : {foundCharacter.created}</div>}
             {foundCharacter.image    && <div><img alt={"Image of "+foundCharacter.name} src={foundCharacter.image}/></div>}
+            {foundCharacter.episode  && <div>episodes:<br/><ol>{
+                foundCharacter.episode.map( (ep, index) => <li key={index}><a href={ep}>{ep}</a></li> )
+            }</ol></div>}
         </div>
     )
 }
