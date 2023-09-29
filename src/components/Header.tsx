@@ -7,6 +7,7 @@ export default function Header() {
             <nav className="PageNav">
                 <Link to={"/"}>Welcome Page</Link>
                 <Link to={"/characters"}>Character Page</Link>
+                <Link to={"/characters/add"}>Add Character</Link>
             </nav>
         </header>
     )
