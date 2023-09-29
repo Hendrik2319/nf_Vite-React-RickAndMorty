@@ -1,6 +1,11 @@
 import {useParams} from "react-router-dom";
+import {Character} from "./Types.tsx";
 
-export default function CharacterDetailCard() {
+type CharacterDetailCardProps = {
+    characters: Character[]
+}
+
+export default function CharacterDetailCard( props: CharacterDetailCardProps ) {
     const urlParams = useParams();
     return (
         <>
