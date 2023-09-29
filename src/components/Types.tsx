@@ -5,6 +5,8 @@ export type Info = {
     prev: string | null
 }
 
+export type FilterPredicate = (character: Character) => boolean
+
 export type Character = {
     id: number
     name: string

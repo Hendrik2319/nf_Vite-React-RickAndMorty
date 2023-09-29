@@ -22,6 +22,7 @@ type ChangeEventHandler = (event: ChangeEvent<HTMLInputElement>) => void
 export default function AddCharacter( props: AddCharacterProps) {
     const [newCharacter, setNewCharacter]
         = useState<NewCharacter>(createEmptyCharacter())
+    console.debug("AddCharacter rendered")
 
     function setValue( event: ChangeEvent<HTMLInputElement>, changeAValue: SetValueFcn ) {
         const changedNewCharacter: NewCharacter = {

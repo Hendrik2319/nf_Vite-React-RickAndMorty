@@ -1,35 +1,33 @@
-import {useState} from 'react'
 import './CharacterPage.css'
 import InfoBlock from './InfoBlock.tsx'
 import CharacterList from "./CharacterList.tsx"
-import {Character, CharacterResponse} from "./Types.tsx"
-import {FilterPredicate, SearchBox} from "./SearchBox.tsx"
+import {CharacterResponse, FilterPredicate} from "./Types.tsx"
+import {SearchBox} from "./SearchBox.tsx"
 
 type CharacterPageProps = {
     data: CharacterResponse
 }
 
+type SetFilterFcn = ( predicate?: FilterPredicate ) => void
+
 export default function CharacterPage( props: CharacterPageProps ) {
-    const [characters, setCharacters] = useState<Character[]>(props.data.results)
+    let setFilterInCharacterList: null | SetFilterFcn = null
     console.debug("CharacterPage rendered")
 
     function setFilter( predicate?: FilterPredicate ) {
-        const filteredCharacterList: Character[] =
-            !predicate
-                ? props.data.results
-                : props.data.results.filter(predicate)
+        if (setFilterInCharacterList)
+            setFilterInCharacterList( predicate )
+    }
 
-        if (filteredCharacterList.length === 0)
-            alert("There are no results")
-        else
-            setCharacters( filteredCharacterList )
+    function propagateSetFilter( setFilter: SetFilterFcn ) {
+        setFilterInCharacterList = setFilter
     }
 
     return (
         <>
             <InfoBlock data={props.data.info}/>
             <SearchBox setFilter={setFilter}/>
-            <CharacterList characters={characters}/>
+            <CharacterList characters={props.data.results} propagateSetFilterFcn={ propagateSetFilter }/>
         </>
     )
 }

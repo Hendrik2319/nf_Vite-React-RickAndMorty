@@ -16,6 +16,7 @@ type RawData = {
 
 export default function App() {
     const [data, setData] = useState<RawData>(StoredData)
+    console.debug("App rendered")
 
     function findUnusedId(): number {
         const maxId = data.results.map(cd => cd.id).reduce( (id1, id2) => Math.max(id1,id2), 0);

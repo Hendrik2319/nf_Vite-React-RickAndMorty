@@ -5,6 +5,7 @@ type InfoBlockProps = {
 }
 
 export default function InfoBlock( props: InfoBlockProps ) {
+    console.debug("InfoBlock rendered")
     return (
         <div className="InfoBlock">
             <div>Count: {props.data.count}</div>

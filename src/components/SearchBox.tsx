@@ -1,7 +1,5 @@
 import {useState} from "react";
-import {Character} from "./Types.tsx";
-
-export type FilterPredicate = (character: Character) => boolean
+import {Character, FilterPredicate} from "./Types.tsx";
 
 type SearchBoxProps = {
     initialValue?: string
@@ -10,11 +8,12 @@ type SearchBoxProps = {
 
 export function SearchBox(props: SearchBoxProps) {
     const [searchStr, setSearchStr] = useState<string>(props.initialValue ? props.initialValue : "")
+    console.debug("SearchBox rendered")
 
     function filterData() {
         const searchStrLC = searchStr.toLowerCase();
         props.setFilter(
-            character => character.name.toLowerCase().includes(searchStrLC)
+            (character: Character)=> character.name.toLowerCase().includes(searchStrLC)
         )
     }
 
