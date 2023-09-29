@@ -9,15 +9,13 @@ body {
 }
 
 .PageNav a {
+    display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
     color: black;
-    margin-right: 20px;
+    margin-right: 10px;
+    padding: 2px 5px;
 }
-
-.PageNav a:visited {
-    color: black;
-}
-
 .PageNav a:hover {
-    background-color: #70ff70;
+    background-color: #ffcd95;
 }
