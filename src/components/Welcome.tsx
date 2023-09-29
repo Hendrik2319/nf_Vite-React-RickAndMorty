@@ -1,3 +1,8 @@
 export default function Welcome() {
-    return
+
+    return (
+        <>
+            <h1>Welcome</h1>
+        </>
+    )
 }

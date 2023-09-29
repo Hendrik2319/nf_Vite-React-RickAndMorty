@@ -2,24 +2,22 @@ body {
     font-family: sans-serif;
 }
 
-.CharacterList {
-    display: flex;
-    flex-wrap: wrap;
+.PageNav {
+    background-color: bisque;
+    border-radius: 8px;
+    padding: 8px;
 }
 
-.InfoBlock, .CharacterBlock, .SearchBox {
-    border: 1px solid #d0d0d0;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #f7f7f7;
+.PageNav a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
 }
 
-.SearchBox {
-    border-color: #70ff70;
-    background-color: #f0fff0;
-}
-.InfoBlock {
-    border-color: #ff7070;
-    background-color: #fff0f0;
+.PageNav a:visited {
+    color: black;
 }
 
+.PageNav a:hover {
+    background-color: #70ff70;
+}
