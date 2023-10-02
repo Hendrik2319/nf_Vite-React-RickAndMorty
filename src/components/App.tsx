@@ -5,7 +5,7 @@ import CharacterPage from "./CharacterPage.tsx";
 import Header from "./Header.tsx";
 import CharacterDetailCard from "./CharacterDetailCard.tsx";
 import {CharacterDetails, Info, NewCharacter} from "./Types.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AddCharacter from "./AddCharacter.tsx";
 import axios from "axios";
 
@@ -26,6 +26,8 @@ export default function App() {
             results: []
         })
     console.debug("App rendered")
+
+    useEffect(  loadData, [] )
 
     function findUnusedId(): number {
         const maxId = data.results.map(cd => cd.id).reduce( (id1, id2) => Math.max(id1,id2), 0);
@@ -54,6 +56,7 @@ export default function App() {
                 return response.data;
             })
             .then( data => {
+                console.log("Data loaded")
                 console.log(data)
                 setData(data)
             } )
