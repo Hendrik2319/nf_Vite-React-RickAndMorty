@@ -1,6 +1,6 @@
 import CharacterBlock from "./CharacterBlock.tsx";
 import {Character, FilterPredicate} from "./Types.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 type CharacterListProps = {
     characters: Character[]
@@ -9,7 +9,9 @@ type CharacterListProps = {
 
 export default function CharacterList(props: CharacterListProps) {
     const [characters, setCharacters] = useState<Character[]>(props.characters)
-    console.debug("CharacterList rendered")
+    console.debug("CharacterList rendered: "+characters.length+" / "+props.characters.length+" characters")
+
+    useEffect( () => setCharacters(props.characters), [props.characters] )
 
     function setFilter( predicate?: FilterPredicate ) {
         const filteredCharacterList: Character[] =
