@@ -15,6 +15,7 @@ type RawData = {
 }
 
 export default function App() {
+    const [page, setPage] = useState(1)
     const [data, setData] = useState<RawData>(
         {
             info: {
@@ -27,7 +28,7 @@ export default function App() {
         })
     console.debug("App rendered")
 
-    useEffect(  loadData, [] )
+    useEffect(  loadData, [page] )
 
     function findUnusedId(): number {
         const maxId = data.results.map(cd => cd.id).reduce( (id1, id2) => Math.max(id1,id2), 0);
@@ -48,7 +49,7 @@ export default function App() {
 
     function loadData() {
         axios
-            .get('https://rickandmortyapi.com/api/character/')
+            .get('https://rickandmortyapi.com/api/character/?page='+page)
             .then( response => {
                 if (response.status!=200)
                     throw { error: "Got wrong status on load data: "+response.status }
@@ -67,7 +68,12 @@ export default function App() {
 
     return (
         <>
-            <Header loadData={loadData}/>
+            <Header
+                loadData={loadData}
+                setPage={newPage => {
+                    if (newPage>0) setPage(newPage)
+                }}
+                page={page}/>
             <Routes>
                 <Route path={"/"} element={<Welcome/>}/>
                 <Route path={"/characters"} element={<CharacterPage data={data}/>}/>

@@ -8,13 +8,20 @@ body {
     padding: 8px;
 }
 
-.PageNav a {
+.PageNav > * {
     display: inline-block;
-    text-decoration: none;
-    border-radius: 5px;
-    color: black;
     margin-right: 10px;
     padding: 2px 5px;
+}
+
+.PageNav button {
+    padding: 2px 5px;
+}
+
+.PageNav a {
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
 }
 .PageNav a:hover {
     background-color: #ffcd95;
